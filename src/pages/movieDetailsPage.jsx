@@ -51,10 +51,10 @@ const MoviePage = (props) => {
                       sx={styles.gridListTile}
                       cols={1}
                     >
-                     <img
-                        src={`https://image.tmdb.org/t/p/w500/${image}`}
-                        alt={'Image alternative'}
-                      />                    
+                   <img
+              src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+              alt={image.file_path}
+          />               
                     </ImageListItem>
                   ))}
                 </ImageList>

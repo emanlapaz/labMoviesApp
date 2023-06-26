@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 
-const AddToFavouritesIcon = ({ movie }) => {
+const AddToPlaylistIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const onUserSelect = (e) => {
@@ -12,10 +12,10 @@ const AddToFavouritesIcon = ({ movie }) => {
     context.addToFavourites(movie);
   };
   return (
-    <IconButton aria-label="add to favorites" onClick={onUserSelect}>
-      <FavoriteIcon color="primary" fontSize="large" />
+    <IconButton aria-label="add to playlist" onClick={onUserSelect}>
+      <PlaylistAddIcon color="primary" fontSize="large" />
     </IconButton>
   );
 };
 
-export default AddToFavouritesIcon;
+export default AddToPlaylistIcon;

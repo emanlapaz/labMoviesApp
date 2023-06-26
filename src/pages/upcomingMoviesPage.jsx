@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getUpcomingMovies } from "../api/tmdb-api";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist'
 
 
 const UpcomingMoviesPage = (props) => {
@@ -30,9 +31,11 @@ const UpcomingMoviesPage = (props) => {
       movies={movies}
       selectFavourite={addToFavourites}
       action={(movie) => {
-        return <AddToFavouritesIcon movie={movie} />
+        return <AddToPlaylistIcon movie={movie} />
       }}
     />
   );
 };
 export default UpcomingMoviesPage;
+
+

@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [myReviews, setMyReviews] = useState( {} ) 
-  const [favourites, setFavourites] = useState([])
+  const [myReviews, setMyReviews] = useState({});
+  const [favourites, setFavourites] = useState([]);
   const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    console.log("Favourites:", favourites);
+    console.log("Must Watch:", playlists);
+  }, [favourites, playlists]);
 
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
@@ -21,16 +26,14 @@ const MoviesContextProvider = (props) => {
       updatedPlaylists.push(movie.id);
     }
     setPlaylists(updatedPlaylists);
-    console.log("Added to playlist:", movie.title);
   };
 
-  // We will use this function in a later section
   const removeFromFavourites = (movie) => {
     setFavourites(favourites.filter((mId) => mId !== movie.id));
   };
 
-  const addReview = (movie, review) => {   // NEW
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = (movie, review) => {
+    setMyReviews({ ...myReviews, [movie.id]: review });
   };
 
   return (
@@ -41,7 +44,7 @@ const MoviesContextProvider = (props) => {
         addToFavourites,
         addToPlaylists,
         removeFromFavourites,
-        addReview,    // NEW
+        addReview,
       }}
     >
       {props.children}
